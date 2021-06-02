@@ -1,0 +1,30 @@
+.search {
+    margin-top: 20px;
+}
+
+.form-inline {
+    justify-content: center;
+}
+
+.card__wrapper {
+    margin: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.card__body {
+    text-align: left;
+}
+
+.card__horizontal {
+    margin-top: 30px;
+    display: inline-flex;
+    padding: 20px;
+}
+
+.card__image {
+  padding-top: 20px;
+  display: inline-flex;
+}
+
+
