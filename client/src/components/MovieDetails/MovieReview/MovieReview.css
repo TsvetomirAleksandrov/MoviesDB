@@ -1,0 +1,17 @@
+.movieReview {
+    margin-top: 50px;
+}
+
+.textField {
+    padding-left: 10px;
+}
+
+.ratingStars {
+    padding-left: 10px;
+}
+
+.movieReviewTitle {
+    text-align: left;
+    padding-left: 20px;
+}
+
