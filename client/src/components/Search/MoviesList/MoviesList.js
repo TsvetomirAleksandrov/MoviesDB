@@ -8,19 +8,19 @@ const MoviesList = (props) => {
             <div className='card__horizontal'>
                 <Row>
                     <Col className='card__image' md='2'>
-                        <Image src={props.movies.Poster} alt='...' fluid />
+                        <Image src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${props.movies.poster_path}`} alt='...' fluid />
                     </Col>
                     <Col md='10'>
                         <Card.Body className='card__body'>
-                            <Card.Title>{props.movies.Title}</Card.Title>
+                            <Card.Title>{`${props.movies.title}  (${props.movies.release_date})`} </Card.Title>
                             <Card.Text>
-                                <small className='text-muted'>Drama, Thriller | 90 minutes</small>
+                                <small className='text-muted'>Rating | {props.movies.vote_average}</small>
                             </Card.Text>
                             <Card.Text>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident eligendi rem consectetur molestias eos natus fugiat unde, vero laborum.
+                            {props.movies.overview}
             </Card.Text>
                             <Card.Text>
-                                <a href='www.google.com'><p>Visit official site</p></a>
+                                {/* <a href='www.google.com'><p>Visit official site</p></a> */}
                             </Card.Text>
                             <Card.Text className='card__button'>
                                 <Button variant="outline-success">Add To Favorites</Button>
