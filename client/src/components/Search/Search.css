@@ -1,5 +1,6 @@
 .search {
     margin-top: 20px;
+    text-align: center;
 }
 
 .form-inline {
@@ -18,7 +19,7 @@
 
 .card__horizontal {
     margin-top: 30px;
-    display: inline-flex;
+    display: flex;
     padding: 20px;
 }
 
