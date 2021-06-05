@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import Hero from '../Hero/Hero';
-import Favorites from '../Favorites/Favorites';
+import React from 'react';
+import Hero from './Hero/Hero';
+import Favorites from './Favorites/Favorites';
 
-const HomePage = (props) => {
-
+const HomePage = () => {
+  
     return (
         <div>
             <Hero />
-            {/* <Favorites movies={props.movies} /> */}
+            <Favorites />
         </div>
     );
 }
