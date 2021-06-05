@@ -1,38 +1,53 @@
-// import { auth } from '../../config/firebase';
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
 import './LoginPage.css';
+import { loginUser } from "../../actions/user_actions";
+import { useDispatch } from "react-redux";
 
-const LoginPage = ({
-  history
-}) => {
+const LoginPage = (props) => {
+  const dispatch = useDispatch();
+
   const onLoginFormSubmitHandler = (e) => {
     e.preventDefault();
 
-    const username = e.target.username.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log(username, password);
+    let dataToSubmit = {
+      email: email,
+      password: password,
+    };
 
-    // auth.signInWithEmailAndPassword(username, password)
-    //   .then((userCredential) => {
-    //     history.push('/');
-    //   });
-  };
+    dispatch(loginUser(dataToSubmit))
+      .then(response => {
+        if (response.payload.loginSuccess) {
+          window.localStorage.setItem('userId', response.payload.userId);
+
+          props.history.push('/');
+        } else {
+          alert('Check out your Account or Password again');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   return (
     <div className='login'>
       <div className='login__container'>
         <h1>Sign-in</h1>
-        <Form>
+        <Form onSubmit={onLoginFormSubmitHandler}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="email" placeholder="Enter Username" />
+            <Form.Label>Email</Form.Label>
+            <Form.Control name="email" type="email" placeholder="Enter Email" />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control name="password" type="password" placeholder="Password" />
           </Form.Group>
           <Button variant="primary" type="submit">
             Sign-in
@@ -43,4 +58,4 @@ const LoginPage = ({
   );
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);
