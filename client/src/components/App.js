@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Auth from "../hoc/auth";
 
 import LoginPage from "./LoginPage/LoginPage";
-import RegisterPage from "./RegisterPage/RegisterPage.js";
+import RegisterPage from "./RegisterPage/RegisterPage";
 import Navbar from './Navbar/Navbar';
 import HomePage from './HomePage/HomePage';
 import Search from './Search/Search';
 import MovieDetails from './MovieDetails/MovieDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 
 function App() {
@@ -35,33 +36,17 @@ function App() {
         <Navbar searchValue={searchValue} setSearchValue={setSearchValue} movies={movies} />
 
         <Switch>
-          {/* <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} /> */}
-
-          <Route path="/login" exact>
-            <LoginPage />
-          </Route>
-
-          <Route path="/register" exact>
-            <RegisterPage />
-          </Route>
-
-          <Route path="/" exact>
-            <HomePage movies={movies} />
-          </Route>
-
-          <Route path="/search">
+          <Route exact path="/" component={Auth(HomePage, null)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          {/* <Route exact path="/movie/:movieTitle" component={Auth(MovieDetails, null)} /> */}
+          <Route exact path="/search">
             <Search searchValue={searchValue} setSearchValue={setSearchValue} movies={movies} />
           </Route>
-
-          <Route path="/movies/movie-title">
-            <MovieDetails />
-          </Route>
-
         </Switch>
 
       </div>
-    </Router>
+    </Router >
   );
 }
 
