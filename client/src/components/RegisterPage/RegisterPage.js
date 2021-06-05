@@ -1,38 +1,41 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
 import './RegisterPage.css';
-import axios from '../axios';
+import { registerUser } from "../../actions/user_actions";
+import { useDispatch } from "react-redux";
 
-const LoginPage = ({
-  history
-}) => {
+const RegisterPage = (props) => {
+  const dispatch = useDispatch();
 
-  const onLoginFormSubmitHandler = async (e) => {
-    e.preventDefault();
+  const onRegisterFormSubmitHandler = async (e) => {
 
-    const username = e.target.username.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
-    const repeatPassword = e.target.repeatPassword.value;
+    const confirmPassword = e.target.confirmPassword.value;
 
-    console.log(username, password, repeatPassword);
+    let dataToSubmit = {
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+    };
 
-    await axios.post('/auth/register', {}, {
-      auth: {
-        username: username,
-        password: password,
-        repeatPassword: repeatPassword,
+    dispatch(registerUser(dataToSubmit)).then(response => {
+      if (response.payload.success) {
+        props.history.push("/login");
+      } else {
+        alert(response.payload.err.errmsg)
       }
-    });
+    })
   };
 
   return (
     <div className='login'>
       <div className='login__container'>
         <h1>Sign-up</h1>
-        <Form onSubmit={onLoginFormSubmitHandler}>
+        <Form onSubmit={onRegisterFormSubmitHandler}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control name='username' type="username" placeholder="Enter Username" />
+            <Form.Label>Email</Form.Label>
+            <Form.Control name='email' type="email" placeholder="Enter Email" />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
@@ -41,7 +44,7 @@ const LoginPage = ({
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Repeat-Password</Form.Label>
-            <Form.Control name="repeatPassword" type="password" placeholder="Repeat-Password" />
+            <Form.Control name="confirmPassword" type="password" placeholder="Repeat-Password" />
           </Form.Group>
           <Button variant="primary" type="submit" >
             Sign-up
@@ -52,4 +55,4 @@ const LoginPage = ({
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
