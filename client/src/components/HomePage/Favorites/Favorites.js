@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './Favorites.css';
 import { AnimationWrapper } from 'react-hover-animation'
 import { Card, CardDeck, Container, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import MovieDetails from '../../MovieDetails/MovieDetails';
 
-const Favorites = () => {
+const Favorites = (props) => {
     const user = useSelector(state => state.user);
     let variable = { userFrom: localStorage.getItem('userId') };
 
     const [Favorites, setFavorites] = useState([]);
-    // const [Loading, setLoading] = useState(true)
-
 
     useEffect(() => {
         fetchFavoredMovie();
@@ -29,6 +29,7 @@ const Favorites = () => {
                 }
             })
     }
+
 
     if (user.userData && !user.userData.isAuth) {
         return (
@@ -48,9 +49,11 @@ const Favorites = () => {
                                 <Container>
                                     <Row >
                                         <Col>
-                                            <Card>
-                                                <Card.Img key={movie._id} src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.moviePoster}`} />
-                                            </Card>
+                                            <Link to={`/movie/${movie.movieTitle}`}>
+                                                <Card>
+                                                    <Card.Img key={movie._id} src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.moviePoster}`} />
+                                                </Card>
+                                            </Link>
                                         </Col>
                                     </Row>
                                 </Container>
@@ -58,7 +61,7 @@ const Favorites = () => {
                         </AnimationWrapper>
                     ))}
                 </div>
-            </div>
+            </div >
         )
     }
 }
