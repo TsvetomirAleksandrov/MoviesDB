@@ -8,7 +8,6 @@ import { USER_SERVER } from '../Config';
 const Header = (props) => {
     let history = useHistory();
     const user = useSelector(state => state.user)
-    console.log(user);
 
     const logoutHandler = () => {
         axios.get(`${USER_SERVER}/logout`).then(response => {
