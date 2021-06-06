@@ -13,9 +13,9 @@ const Hero = () => {
         <div>
             <Jumbotron>
                 <div className="heading">
-                    <h1>Heading</h1>
+                    <h1>The Martian</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    An astronaut becomes stranded on Mars after his team assume him dead, and must rely on his ingenuity to find a way to signal to Earth that he is alive.
                     </p>
                     <Link to="/search">
                         <Button variant="primary">Search</Button>

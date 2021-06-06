@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 const RegisterPage = (props) => {
   const dispatch = useDispatch();
+  console.log(props);
 
   const onRegisterFormSubmitHandler = async (e) => {
 
@@ -21,9 +22,10 @@ const RegisterPage = (props) => {
 
     dispatch(registerUser(dataToSubmit)).then(response => {
       if (response.payload.success) {
-        props.history.push("/login");
+        alert('Registered successfully!');
+
       } else {
-        alert(response.payload.err.errmsg)
+        alert('Please try again...')
       }
     })
   };
