@@ -50,22 +50,22 @@ The app will run on http://localhost:3000/
 ## Login Component.
 ![2](https://user-images.githubusercontent.com/26245125/120931513-93479e00-c6fa-11eb-966c-33211de7a4fb.JPG)
 
-## Favorites Component.
+## Homepage Component.
 ![4](https://user-images.githubusercontent.com/26245125/120931519-980c5200-c6fa-11eb-94e8-7dd436fd69d9.JPG)
 
-## Search Component.
+## Search Component (search for a movie by it's name using the TMDB Api). 
 ![5](https://user-images.githubusercontent.com/26245125/120931521-9a6eac00-c6fa-11eb-97da-58b9167eb7b2.JPG)
 
-## Add to Favorite.
+## Add to Favorite (add the currernt movie to the database).
 ![6](https://user-images.githubusercontent.com/26245125/120931523-9cd10600-c6fa-11eb-8794-14b8aa4cde12.JPG)
 
-## The new movie is added to favorites.
+## The new movie is added to favorites. You can view it's details by clicking one of the movie cards.
 ![7](https://user-images.githubusercontent.com/26245125/120931526-9fcbf680-c6fa-11eb-933f-0ab1978d4afe.JPG)
 
-## The Movie Details Component can be reached only through user's favorites.
+## The Movie Details Component can be reached only through Favorites component.
 ![8](https://user-images.githubusercontent.com/26245125/120931531-a22e5080-c6fa-11eb-998b-b67e051ec9ff.JPG)
 
-## Database.
+## Database (MongoDB).
 ![9](https://user-images.githubusercontent.com/26245125/120931533-a490aa80-c6fa-11eb-87b8-f45000e817b1.JPG)
 
 
