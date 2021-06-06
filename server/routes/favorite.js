@@ -8,14 +8,15 @@ const { auth } = require("../middlewares/authentication");
 //             Subscribe
 //=================================
 
-router.post("/favoriteNumber", (req, res) => {
+router.post("/getFavorite", (req, res) => {
+    console.log(req.body.movieId);
 
-    Favorite.find({ "movieTitle": req.body.movieTitle })
-        .exec((err, subscribe) => {
+    Favorite.find({ "movieTitle": req.body.movieId })
+        .exec((err, favorite) => {
             if (err) return res.status(400).send(err)
-
-            res.status(200).json({ success: true, subscribeNumber: subscribe.length })
+            res.status(200).json({ success: true, favorite })
         })
+
 });
 
 router.post("/favorited", (req, res) => {
@@ -56,7 +57,6 @@ router.post("/removeFromFavorite", (req, res) => {
 
 router.post("/getFavoredMovie", (req, res) => {
 
-    //Need to find all of the Users that I am subscribing to From Subscriber Collection 
     Favorite.find({ 'userFrom': req.body.userFrom })
         .exec((err, favorites) => {
             if (err) return res.status(400).send(err);
