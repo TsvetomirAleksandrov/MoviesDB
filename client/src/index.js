@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import Reducer from './reducers';
 import { Provider } from 'react-redux';
+
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
