@@ -15,6 +15,7 @@ app.use(cors());
 app.use('/api/users', require('./routes/user'));
 app.use('/api/comment', require('./routes/comment'));
 app.use('/api/favorite', require('./routes/favorite'));
+app.use('/api/ratings', require('./routes/ratings'));
 
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
