@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const MoviesList = (props) => {
     const user = useSelector(state => state.user)
 
-    const [FavoriteNumber, setFavoriteNumber] = useState(0);
+    // const [FavoriteNumber, setFavoriteNumber] = useState(0);
     const [Favorited, setFavorited] = useState(false);
 
     const movieId = props.movies.id;
@@ -39,7 +39,7 @@ const MoviesList = (props) => {
             axios.post('/api/favorite/removeFromFavorite', variables)
                 .then(response => {
                     if (response.data.success) {
-                        setFavoriteNumber(FavoriteNumber - 1)
+                        // setFavoriteNumber(FavoriteNumber - 1)
                         setFavorited(!Favorited)
                     } else {
                         alert('Failed to Remove From Favorite')
@@ -50,7 +50,7 @@ const MoviesList = (props) => {
             axios.post('/api/favorite/addToFavorite', variables)
                 .then(response => {
                     if (response.data.success) {
-                        setFavoriteNumber(FavoriteNumber + 1)
+                        // setFavoriteNumber(FavoriteNumber + 1)
                         setFavorited(!Favorited)
                     } else {
                         alert('Failed to Add To Favorite')
@@ -68,7 +68,7 @@ const MoviesList = (props) => {
                     alert('Failed to get Favorite Information')
                 }
             })
-    }, [props])
+    }, [user])
 
     return (
         <div>
